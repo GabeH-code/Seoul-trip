@@ -77,19 +77,74 @@
                 <h3 class="text-sm font-bold text-[#8C8275] flex items-center">
                     <i class="fa-solid fa-info-circle mr-1.5"></i> 航班與住宿總覽
                 </h3>
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                    <div class="bg-[#F4EFEA] p-2.5 rounded-xl border border-[#D4C5B9]">
-                        <span class="block text-[#8C8275] font-medium mb-0.5"><i class="fa-solid fa-plane mr-1"></i>去程航班</span>
+
+                <!-- 去程 -->
+                <div class="bg-[#F4EFEA] p-3 rounded-xl border border-[#D4C5B9] text-xs">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[#8C8275] font-medium"><i class="fa-solid fa-plane-departure mr-1"></i>去程航班</span>
                         <span class="font-bold text-[#4A453F]">虎航 IT602</span>
                     </div>
-                    <div class="bg-[#F4EFEA] p-2.5 rounded-xl border border-[#D4C5B9]">
-                        <span class="block text-[#8C8275] font-medium mb-0.5"><i class="fa-solid fa-plane fa-rotate-90 mr-1"></i>回程航班</span>
-                        <span class="font-bold text-[#4A453F]">華航 CI0261</span>
+                    <div class="text-[11px] text-[#8C8275] mb-1.5"><i class="fa-regular fa-calendar mr-1"></i>2026/10/21（三）｜飛行約 2 小時 30 分</div>
+                    <div class="flex items-center justify-between">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-[#4A453F] leading-none">20:00</div>
+                            <div class="text-[10px] text-gray-500 mt-1">桃園 TPE T1</div>
+                        </div>
+                        <div class="flex-1 mx-3 border-t border-dashed border-[#D4C5B9] relative">
+                            <i class="fa-solid fa-plane absolute -top-2 left-1/2 -translate-x-1/2 text-[#8C8275] bg-[#F4EFEA] px-1"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-[#4A453F] leading-none">23:30</div>
+                            <div class="text-[10px] text-gray-500 mt-1">仁川 ICN T1</div>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-[#F4EFEA] p-2.5 rounded-xl border border-[#D4C5B9] text-xs space-y-1">
-                    <div class="flex justify-between items-center"><span class="text-[#8C8275] font-medium"><i class="fa-solid fa-bed mr-1"></i>10/21 住宿</span><span class="font-bold">Incheon Airport Line Guesthouse</span></div>
-                    <div class="flex justify-between items-center"><span class="text-[#8C8275] font-medium"><i class="fa-solid fa-bed mr-1"></i>10/22-25 住宿</span><span class="font-bold">Nesto Hongdae (네스토 홍대)</span></div>
+
+                <!-- 回程 -->
+                <div class="bg-[#F4EFEA] p-3 rounded-xl border border-[#D4C5B9] text-xs">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[#8C8275] font-medium"><i class="fa-solid fa-plane-arrival mr-1"></i>回程航班</span>
+                        <span class="font-bold text-[#4A453F]">華航 CI0261</span>
+                    </div>
+                    <div class="text-[11px] text-[#8C8275] mb-1.5"><i class="fa-regular fa-calendar mr-1"></i>2026/10/25（日）｜飛行約 2 小時 40 分</div>
+                    <div class="flex items-center justify-between">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-[#4A453F] leading-none">13:55</div>
+                            <div class="text-[10px] text-gray-500 mt-1">金浦 GMP 一航廈</div>
+                        </div>
+                        <div class="flex-1 mx-3 border-t border-dashed border-[#D4C5B9] relative">
+                            <i class="fa-solid fa-plane absolute -top-2 left-1/2 -translate-x-1/2 text-[#8C8275] bg-[#F4EFEA] px-1"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-[#4A453F] leading-none">15:35</div>
+                            <div class="text-[10px] text-gray-500 mt-1">松山 TSA T1</div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-amber-700 mt-2 leading-relaxed"><i class="fa-solid fa-triangle-exclamation mr-1"></i>CI261 為金浦機場 → 台北松山機場，並非仁川／桃園，出發前請確認機場，並預留前往金浦的交通時間。</p>
+                </div>
+                <p class="text-[10px] text-gray-400 leading-relaxed">※ 時刻依公開班表整理（時間皆為當地時間），航班可能調整，請以電子機票與航空公司公告為準。</p>
+
+                <!-- 住宿 -->
+                <div class="bg-[#F4EFEA] p-3 rounded-xl border border-[#D4C5B9] text-xs space-y-2.5">
+                    <div class="flex justify-between items-center gap-2">
+                        <div class="min-w-0">
+                            <span class="block text-[#8C8275] font-medium"><i class="fa-solid fa-bed mr-1"></i>10/21 住宿</span>
+                            <span class="font-bold block truncate">Incheon Airport Line Guesthouse</span>
+                        </div>
+                        <a href="https://map.naver.com/v5/search/Incheon%20Airport%20Line%20Guesthouse" target="_blank" rel="noopener" class="shrink-0 bg-white text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center border border-[#D4C5B9]">
+                            <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
+                        </a>
+                    </div>
+                    <div class="border-t border-[#D4C5B9]"></div>
+                    <div class="flex justify-between items-center gap-2">
+                        <div class="min-w-0">
+                            <span class="block text-[#8C8275] font-medium"><i class="fa-solid fa-bed mr-1"></i>10/22-25 住宿</span>
+                            <span class="font-bold block truncate">Nesto Hongdae (네스토 홍대)</span>
+                        </div>
+                        <a href="https://map.naver.com/v5/search/%EB%84%A4%EC%8A%A4%ED%86%A0%20%ED%99%8D%EB%8C%80" target="_blank" rel="noopener" class="shrink-0 bg-white text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center border border-[#D4C5B9]">
+                            <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -101,207 +156,11 @@
                 <button onclick="switchDay(4)" id="day-btn-4" class="day-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-[#4A453F] border border-[#E8E2DA] whitespace-nowrap">備選景點</button>
             </div>
 
-            <!-- D1 行程內容 -->
-            <div id="day-content-1" class="space-y-3 day-content">
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">上午 / 首爾站</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">樂天Outlet 首爾驛店</h4>
-                    <p class="text-xs text-gray-500 mb-2">롯데아울렛 서울역점 | 購物商場</p>
-                    <p class="text-xs text-[#4A453F] mb-3">位於首爾車站旁，集合各大品牌，適合抵達後採買。</p>
-                    <div class="flex space-x-2">
-                        <a href="https://map.naver.com/v5/search/롯데아울렛%20서울역점" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
-                            <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">下午 / 新村</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">梨花女子大學</h4>
-                    <p class="text-xs text-gray-500 mb-2">이화여자대학교 | 旅遊景點</p>
-                    <p class="text-xs text-[#4A453F] mb-3">著名歐式建築與倒V字峽谷階梯，周邊平價服飾好逛。</p>
-                    <div class="flex space-x-2">
-                        <a href="https://map.naver.com/v5/search/이화여자대학교" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
-                            <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">傍晚 / 南山</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">N首爾塔</h4>
-                    <p class="text-xs text-gray-500 mb-2">N서울타워 | 旅遊景點</p>
-                    <p class="text-xs text-[#4A453F] mb-3">俯瞰首爾夜景經典地標，愛情锁牆熱門拍照點。</p>
-                    <div class="flex space-x-2">
-                        <a href="https://map.naver.com/v5/search/N서울타워" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
-                            <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- D2 行程內容 -->
-            <div id="day-content-2" class="space-y-3 day-content hidden">
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#D06B54]">
-                    <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded font-bold">早晨 / 安國</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">Artist Bakery</h4>
-                    <p class="text-xs text-gray-500 mb-2">아티스트 베이커리 안국 | 咖啡/烘焙</p>
-                    <p class="text-xs text-[#4A453F] mb-3">人氣烘焙麵包店，法式復古風格，特色鹹甜麵包。</p>
-                    <a href="https://map.naver.com/v5/search/아티스트%20베이커리%20안국" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">上午 / 三清洞</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">三清洞</h4>
-                    <p class="text-xs text-gray-500 mb-2">삼청동 | 旅遊景點</p>
-                    <p class="text-xs text-[#4A453F] mb-3">傳統韓屋與藝廊交織特色街道，氛圍悠閒。</p>
-                    <a href="https://map.naver.com/v5/search/삼청동" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">中午 / 三清洞</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">Nonfiction Samcheong</h4>
-                    <p class="text-xs text-gray-500 mb-2">논픽션 삼청 | 精品/香氛</p>
-                    <p class="text-xs text-[#4A453F] mb-3">質感韓系香氛品牌門市，極具設計感。</p>
-                    <a href="https://map.naver.com/v5/search/논픽션%20삼청" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#D06B54]">
-                    <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded font-bold">午餐 / 乙支路</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">숙성도 을지로 (熟成度)</h4>
-                    <p class="text-xs text-gray-500 mb-2">숙성도 을지로 | 韓式烤肉</p>
-                    <p class="text-xs text-[#4A453F] mb-3">獨家熟成技術頂級豬肉，專人代烤服務。</p>
-                    <a href="https://map.naver.com/v5/search/숙성도%20을지로" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-            </div>
-
-            <!-- D3 行程內容 -->
-            <div id="day-content-3" class="space-y-3 day-content hidden">
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">早晨 / 聖水</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">首爾林公園</h4>
-                    <p class="text-xs text-gray-500 mb-2">서울숲 | 公園</p>
-                    <p class="text-xs text-[#4A453F] mb-3">都市綠洲，廣闊林蔭步道、湖泊與小鹿。</p>
-                    <a href="https://map.naver.com/v5/search/서울숲" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#D06B54]">
-                    <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded font-bold">午餐 / 聖水</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">Neungdong Minari Seongsu</h4>
-                    <p class="text-xs text-gray-500 mb-2">능동미나리 성수점 | 韓國料理</p>
-                    <p class="text-xs text-[#4A453F] mb-3">水芹菜特色料理，牛肉湯飯清爽美味。</p>
-                    <a href="https://map.naver.com/v5/search/능동미나리%20성수점" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">下午 / 聖水</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">自然島鹽可頌 聖水店</h4>
-                    <p class="text-xs text-gray-500 mb-2">자연도소금빵 성수 | 烘焙麵包</p>
-                    <p class="text-xs text-[#4A453F] mb-3">現烤出爐奶油海鹽可頌，香氣濃郁超人氣。</p>
-                    <a href="https://map.naver.com/v5/search/자연도소금빵%20성수" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#8C8275]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">下午 / 聖水</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">Sandos Seongsu</h4>
-                    <p class="text-xs text-gray-500 mb-2">샌도스 성수 | 三明治/咖啡</p>
-                    <p class="text-xs text-[#4A453F] mb-3">極具設計感空間，熱門質感好店。</p>
-                    <a href="https://map.naver.com/v5/search/샌도스%20성수" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] relative pl-6 border-l-4 border-l-[#D06B54]">
-                    <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded font-bold">晚餐 / 聖水</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">無垢屋 聖水店</h4>
-                    <p class="text-xs text-gray-500 mb-2">무구옥 성수점 | 韓國料理</p>
-                    <p class="text-xs text-[#4A453F] mb-3">主打溫暖美味雞肉料理，暖胃首選。</p>
-                    <a href="https://map.naver.com/v5/search/무구옥%20성수점" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-            </div>
-
-            <!-- 備選景點內容 -->
-            <div id="day-content-4" class="space-y-3 day-content hidden">
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">弘大 / 畫廊/香氛</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">Nonfictionhome</h4>
-                    <p class="text-xs text-gray-500 mb-2">논픽션홈</p>
-                    <p class="text-xs text-[#4A453F] mb-3">生活香氛展覽體驗空間。</p>
-                    <a href="https://map.naver.com/v5/search/논픽션홈" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">弘大 / 韓國菜</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">닭장수김밥</h4>
-                    <p class="text-xs text-gray-500 mb-2">닭장수김밥</p>
-                    <p class="text-xs text-[#4A453F] mb-3">在地特色紫菜包飯。</p>
-                    <a href="https://map.naver.com/v5/search/닭장수김밥" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">弘大 / 傳統酒吧</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">Jwon Makgeolliano</h4>
-                    <p class="text-xs text-gray-500 mb-2">줜막걸리아노</p>
-                    <p class="text-xs text-[#4A453F] mb-3">特色米酒與韓式下酒菜酒吧。</p>
-                    <a href="https://map.naver.com/v5/search/줜막걸리아노" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">延南洞 / 鰻魚料理</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">風川鰻魚 延南店</h4>
-                    <p class="text-xs text-gray-500 mb-2">풍천장어 연남점</p>
-                    <p class="text-xs text-[#4A453F] mb-3">超人氣現烤鰻魚名店。</p>
-                    <a href="https://map.naver.com/v5/search/풍천장어%20연남점" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">龍山 / 購物商場</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">I'Park Mall</h4>
-                    <p class="text-xs text-gray-500 mb-2">아이파크몰 용산점</p>
-                    <p class="text-xs text-[#4A453F] mb-3">大型複合式購物商場與美食街。</p>
-                    <a href="https://map.naver.com/v5/search/아이파크몰%20용산점" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">上水 / 炸物小吃</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">홍대삭 상수본점</h4>
-                    <p class="text-xs text-gray-500 mb-2">홍대삭 상수본점</p>
-                    <p class="text-xs text-[#4A453F] mb-3">平價道地韓式炸物與年糕店。</p>
-                    <a href="https://map.naver.com/v5/search/홍대삭%20상수본점" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA]">
-                    <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-medium">弘大 / 咖啡甜點</span>
-                    <h4 class="font-bold text-base mt-1 text-[#4A453F]">Peony 弘大店</h4>
-                    <p class="text-xs text-gray-500 mb-2">피오니 홍대점</p>
-                    <p class="text-xs text-[#4A453F] mb-3">知名鮮奶油草莓蛋糕專賣店。</p>
-                    <a href="https://map.naver.com/v5/search/피오니%20홍대점" target="_blank" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-            </div>
+            <!-- 各日行程（由 SPOTS 資料自動產生，導覽頁共用同一份資料） -->
+            <div id="day-content-1" class="space-y-3 day-content"></div>
+            <div id="day-content-2" class="space-y-3 day-content hidden"></div>
+            <div id="day-content-3" class="space-y-3 day-content hidden"></div>
+            <div id="day-content-4" class="space-y-3 day-content hidden"></div>
         </section>
 
         <!-- ================= 2. GUIDE 分頁 (深度導覽) ================= -->
@@ -318,30 +177,66 @@
                 </div>
             </div>
 
-            <!-- OpenStreetMap 嵌入地圖 -->
+            <!-- 區域地圖（可切換街區） -->
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-2">
-                <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-map-location-dot mr-1"></i> 聖水洞核心地圖導覽</h3>
+                <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-map-location-dot mr-1"></i> 街區地圖導覽</h3>
+                <div id="area-chips" class="flex space-x-2 overflow-x-auto hide-scrollbar pb-1"></div>
                 <div class="w-full h-64 rounded-xl overflow-hidden border border-[#E8E2DA]">
-                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=127.0350%2C37.5400%2C127.0600%2C37.5550&amp;layer=mapnik" style="border: 0;"></iframe>
+                    <iframe id="area-map" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border: 0;" loading="lazy"></iframe>
                 </div>
                 <div class="text-right">
-                    <small><a href="https://www.openstreetmap.org/?mlat=37.5475&amp;mlon=127.0475#map=15/37.5475/127.0475" target="_blank" class="text-xs text-[#8C8275] underline">檢視較大的地圖</a></small>
+                    <small><a id="area-map-link" href="#" target="_blank" rel="noopener" class="text-xs text-[#8C8275] underline">檢視較大的地圖</a></small>
                 </div>
+            </div>
+
+            <!-- 景點導覽 -->
+            <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-sm text-[#8C8275]"><i class="fa-solid fa-compass mr-1"></i> 景點深度導覽</h3>
+                    <span id="guide-count" class="text-[10px] text-gray-400"></span>
+                </div>
+                <div id="guide-filters" class="flex space-x-2 overflow-x-auto hide-scrollbar pb-1"></div>
+                <div id="guide-list" class="space-y-3"></div>
             </div>
         </section>
 
         <!-- ================= 3. WALLET 分頁 (記帳與匯率) ================= -->
         <section id="tab-wallet" class="tab-content space-y-4 hidden">
-            <!-- 匯率換算與計算機 -->
+            <!-- 匯率換算（韓幣 ⇄ 台幣） -->
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
                 <div class="flex justify-between items-center">
-                    <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-calculator mr-1"></i> 簡易計算機與匯率換算</h3>
+                    <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-right-left mr-1"></i> 韓幣 ⇄ 台幣 換算</h3>
                     <div class="flex items-center space-x-1 text-xs">
-                        <span class="text-gray-500">1000 KRW =</span>
-                        <input type="number" id="exchange-rate" value="0.024" step="0.001" class="w-16 px-1.5 py-0.5 border border-[#E8E2DA] rounded text-center font-bold text-xs" onchange="calcCurrency()">
+                        <span class="text-gray-500">1 KRW =</span>
+                        <input type="number" id="exchange-rate" value="0.024" step="0.0001" min="0" class="w-20 px-1.5 py-0.5 border border-[#E8E2DA] rounded text-center font-bold text-xs" oninput="onRateChange()">
                         <span class="text-gray-500">TWD</span>
                     </div>
                 </div>
+
+                <div class="grid grid-cols-[1fr_auto_1fr] items-end gap-2">
+                    <div>
+                        <label class="block text-[10px] font-medium text-gray-500 mb-1">韓幣 KRW ₩</label>
+                        <input type="number" inputmode="decimal" id="conv-krw" placeholder="0" class="w-full px-3 py-2 bg-[#F9F8F6] border border-[#E8E2DA] rounded-xl text-sm font-bold focus:outline-none focus:border-[#8C8275]" oninput="convFromKrw()">
+                    </div>
+                    <div class="pb-2 text-[#8C8275]"><i class="fa-solid fa-right-left"></i></div>
+                    <div>
+                        <label class="block text-[10px] font-medium text-gray-500 mb-1">台幣 TWD NT$</label>
+                        <input type="number" inputmode="decimal" id="conv-twd" placeholder="0" class="w-full px-3 py-2 bg-[#F9F8F6] border border-[#E8E2DA] rounded-xl text-sm font-bold focus:outline-none focus:border-[#8C8275]" oninput="convFromTwd()">
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <button onclick="quickKrw(1000)" class="px-2.5 py-1 bg-[#F4EFEA] text-[#8C8275] rounded-lg text-[11px] font-bold hover:bg-[#E8E2DA]">₩1,000</button>
+                    <button onclick="quickKrw(5000)" class="px-2.5 py-1 bg-[#F4EFEA] text-[#8C8275] rounded-lg text-[11px] font-bold hover:bg-[#E8E2DA]">₩5,000</button>
+                    <button onclick="quickKrw(10000)" class="px-2.5 py-1 bg-[#F4EFEA] text-[#8C8275] rounded-lg text-[11px] font-bold hover:bg-[#E8E2DA]">₩10,000</button>
+                    <button onclick="quickKrw(50000)" class="px-2.5 py-1 bg-[#F4EFEA] text-[#8C8275] rounded-lg text-[11px] font-bold hover:bg-[#E8E2DA]">₩50,000</button>
+                    <button onclick="clearConv()" class="px-2.5 py-1 bg-white text-gray-400 rounded-lg text-[11px] font-bold border border-[#E8E2DA] ml-auto">清除</button>
+                </div>
+                <p class="text-[10px] text-gray-400 leading-relaxed">匯率可自行修改（已自動記住），出發前請依銀行或換匯 App 的即時牌價調整。</p>
+            </div>
+
+            <!-- 簡易計算機 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
+                <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-calculator mr-1"></i> 簡易計算機（以韓幣計算）</h3>
                 <div>
                     <input type="text" id="calc-input" placeholder="例如: 500+200*3" class="w-full px-3 py-2 bg-[#F9F8F6] border border-[#E8E2DA] rounded-xl text-sm font-mono mb-2 focus:outline-none focus:border-[#8C8275]" />
                     <div class="flex space-x-2">
@@ -416,10 +311,98 @@
             <!-- 天氣與緊急聯絡 -->
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
                 <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-cloud-sun-rain mr-1"></i> 當地天氣與氣象</h3>
-                <a href="https://www.weather.go.kr/w/index.do" target="_blank" class="flex justify-between items-center p-3 bg-[#F4EFEA] rounded-xl text-xs font-bold text-[#4A453F] hover:bg-[#E8E2DA] transition">
+                <a href="https://www.weather.go.kr/w/index.do" target="_blank" rel="noopener" class="flex justify-between items-center p-3 bg-[#F4EFEA] rounded-xl text-xs font-bold text-[#4A453F] hover:bg-[#E8E2DA] transition">
                     <span>首爾氣象廳官網 (KMA)</span>
                     <i class="fa-solid fa-external-link-alt text-[#8C8275]"></i>
                 </a>
+            </div>
+
+            <!-- LINE Pay 韓國支付與刷卡優惠 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
+                <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-credit-card mr-1"></i> LINE Pay 韓國支付與刷卡優惠</h3>
+
+                <div class="bg-[#F4EFEA] p-3 rounded-xl text-xs space-y-1.5 leading-relaxed text-gray-700">
+                    <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-store mr-1 text-[#8C8275]"></i>可以用在哪裡？</p>
+                    <p>LINE Pay 可在韓國 CU 等特定跨境通路掃碼付款；並非所有店家都支援，請認明店家的 LINE Pay 標示，結帳前先確認。</p>
+                </div>
+
+                <div class="bg-[#F4EFEA] p-3 rounded-xl text-xs space-y-2 leading-relaxed text-gray-700">
+                    <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-gift mr-1 text-[#8C8275]"></i>LINE Pay 回饋活動（10/1 ~ 12/31）</p>
+
+                    <div class="bg-white rounded-lg p-2.5 border border-[#E8E2DA] space-y-1">
+                        <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-dice mr-1"></i>轉轉樂</p>
+                        <p>單月累計 2 筆即可玩轉轉樂，最高抽 666 點（每月一次）。</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-2.5 border border-[#E8E2DA] space-y-1">
+                        <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-utensils mr-1"></i>吃喝補給／<i class="fa-solid fa-bag-shopping mr-1"></i>旅遊購物</p>
+                        <p class="text-[11px] text-gray-500">基本回饋：吃喝補給 5%</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-[11px] border-collapse">
+                                <thead>
+                                    <tr class="text-[#8C8275] text-left border-b border-[#E8E2DA]">
+                                        <th class="py-1 pr-2 font-bold">綁定卡別</th>
+                                        <th class="py-1 pr-2 font-bold">吃喝補給</th>
+                                        <th class="py-1 font-bold">旅遊購物</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-top">
+                                    <tr class="border-b border-[#F4EFEA]">
+                                        <td class="py-1.5 pr-2">任一 VISA 卡</td>
+                                        <td class="py-1.5 pr-2">+10%<br><span class="text-gray-400">月上限 200 點</span></td>
+                                        <td class="py-1.5">+3%<br><span class="text-gray-400">月上限 150 點</span></td>
+                                    </tr>
+                                    <tr class="border-b border-[#F4EFEA]">
+                                        <td class="py-1.5 pr-2">中信 LINE Pay VISA 卡、簽帳卡、JCB 卡／聯邦賴點卡／永豐 DAWAY 卡</td>
+                                        <td class="py-1.5 pr-2">+10%</td>
+                                        <td class="py-1.5">+5%<br><span class="text-gray-400">（JCB 卡不適用）</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-1.5 pr-2">台新信用卡、簽帳卡</td>
+                                        <td class="py-1.5 pr-2">+8%<br><span class="text-gray-400">月上限 100 點</span></td>
+                                        <td class="py-1.5">+3%<br><span class="text-gray-400">月上限 200 點</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-[10px] text-gray-400">※ 旅遊購物 +5% 適用中信 LINE Pay VISA 卡、簽帳卡／聯邦賴點卡／永豐 DAWAY 卡。</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-2.5 border border-[#E8E2DA] space-y-1">
+                        <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-spa mr-1"></i>獨立活動：Olive Young</p>
+                        <ul class="list-disc pl-4 space-y-0.5">
+                            <li>～2026/12/31：不限金額，每月可抽 888 點一次。</li>
+                            <li>10/1 ~ 10/31：單筆滿 10 萬韓元享 95 折（限用 1 次），優惠券請至 LINE Pay「遊韓專區」下載。</li>
+                            <li>Global 線上購物（10/1 ~ 10/11，<span class="text-rose-600 font-bold">已結束</span>）：綁 VISA 卡 3%；綁中信 LINE Pay VISA／JCB／簽帳卡、聯邦賴點卡、永豐 DAWAY 卡 +5%。</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-2.5 border border-[#E8E2DA] space-y-1">
+                        <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-star mr-1"></i>獨立活動：樂天世界（最高 30%）</p>
+                        <ul class="list-disc pl-4 space-y-0.5">
+                            <li>活動期間 9/1 ~ 11/30，限樂天世界（首爾／釜山）、樂天世界塔 Seoul Sky、樂天世界水族館。</li>
+                            <li>綁任一信用卡或簽帳卡 15%，綁 VISA 卡再 +15%。</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-[10px] text-gray-500"><i class="fa-solid fa-circle-info mr-1"></i>更多獨立活動與優惠券，請至 LINE Pay「遊韓專區」查看。</p>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl text-xs space-y-1.5 leading-relaxed text-amber-800">
+                    <p class="font-bold"><i class="fa-solid fa-triangle-exclamation mr-1"></i>刷卡注意事項</p>
+                    <ul class="list-disc pl-4 space-y-1">
+                        <li>LINE Pay 綁定信用卡或簽帳卡扣款，屬於跨境海外交易，通常會被收取約 <b>1.5%</b> 海外交易手續費，建議綁定海外回饋高的信用卡來抵銷。</li>
+                        <li>CU 與 7-Eleven 的結帳操作流程不同，7-Eleven 有旅客反映掃碼失敗，建議備好信用卡或現金作為替代。</li>
+                        <li>若想免收海外手續費，可另外準備悠遊付、台灣 Pay 等直接綁定台灣銀行帳戶的支付工具（依各工具公告為準）。</li>
+                        <li>地下街商圈、路邊攤與傳統市場仍可能只收現金，建議帶少量韓幣現金備用。</li>
+                    </ul>
+                </div>
+
+                <p class="text-[10px] text-gray-400 leading-relaxed">
+                    ※ 回饋活動內容為你提供的 LINE Pay 優惠資訊，活動內容、回饋比例與上限隨時可能調整，請以 LINE Pay 官方 App 及發卡銀行公告為準。海外手續費與注意事項依網路報導整理。
+                    參考來源：<a href="https://uptogo.com.tw/財經/信用卡/韓國可刷line-pay嗎？/" target="_blank" rel="noopener" class="underline text-[#8C8275]">uptogo｜韓國可刷 LINE Pay 嗎？</a>、
+                    <a href="https://www.money101.com.tw/blog/韓國-line-pay" target="_blank" rel="noopener" class="underline text-[#8C8275]">Money101｜2026 韓國 LINE Pay</a>
+                </p>
             </div>
 
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
@@ -478,7 +461,237 @@
 
     <!-- JavaScript 互動邏輯 -->
     <script>
-        // 分頁切換
+        // ================= 景點資料（行程表與導覽頁共用） =================
+        // day: 1~3 為各日行程，4 為備選景點；meal: true 代表餐廳（行程表以強調色標示）
+        const SPOTS = [
+            // ---------- D1 10/22 ----------
+            { id: 'lotte-outlet', day: 1, slot: '上午 / 首爾站', area: '首爾站', name: '樂天Outlet 首爾驛店', kr: '롯데아울렛 서울역점', cat: '購物商場',
+              desc: '位於首爾車站旁，集合各大品牌，適合抵達後採買。',
+              highlight: '設在首爾站大樓內，品牌折扣集中，旁邊就是樂天超市，可一次買齊服飾與伴手禮。',
+              tip: '結帳前留意店內退稅標示，多數品牌滿額可辦退稅，記得隨身帶護照；樂天超市也可順便查看 LINE Pay 優惠（見資訊頁）。',
+              transit: '首爾站（1、4 號線、機場快線）直通。', best: '開店後人較少，逛起來比較從容' },
+            { id: 'ewha', day: 1, slot: '下午 / 新村', area: '新村・梨大', name: '梨花女子大學', kr: '이화여자대학교', cat: '旅遊景點',
+              desc: '著名歐式建築與倒V字峽谷階梯，周邊平價服飾好逛。',
+              highlight: '校園內的下沉式階梯（倒 V 字峽谷）是建築亮點，歐式校舍也很適合拍照。',
+              tip: '校園是教學場所，請保持安靜並遵守開放與拍攝規定；出校門後的梨大商圈有大量平價服飾與配件。',
+              transit: '地鐵 2 號線「梨大站」。', best: '白天光線好，拍照最漂亮' },
+            { id: 'nseoul', day: 1, slot: '傍晚 / 南山', area: '南山', name: 'N首爾塔', kr: 'N서울타워', cat: '旅遊景點',
+              desc: '俯瞰首爾夜景經典地標，愛情鎖牆熱門拍照點。',
+              highlight: '位於南山山頂，可眺望首爾全景；塔下的愛情鎖牆是熱門打卡點。',
+              tip: '10 月底傍晚山上風大偏涼，多帶一件外套；下山時人潮集中，可預留排隊時間，或選擇步行下山。',
+              transit: '明洞站步行至南山纜車站，或搭南山循環巴士上山。', best: '約日落前 30 分鐘抵達，一次看日落與夜景' },
+
+            // ---------- D2 10/23 ----------
+            { id: 'artist-bakery', day: 2, slot: '早晨 / 安國', area: '安國・三清洞', name: 'Artist Bakery', kr: '아티스트 베이커리 안국', cat: '咖啡/烘焙', meal: true,
+              desc: '人氣烘焙麵包店，法式復古風格，特色鹹甜麵包。',
+              highlight: '法式復古風格的人氣烘焙店，以特色鹹甜麵包聞名，是早餐或咖啡時光的好選擇。',
+              tip: '熱門時段常需排隊，建議一早前往；可先外帶幾個麵包，邊走邊逛三清洞。',
+              transit: '地鐵 3 號線「安國站」步行可達。', best: '早上開店時段，人潮較少' },
+            { id: 'samcheong', day: 2, slot: '上午 / 三清洞', area: '安國・三清洞', name: '三清洞', kr: '삼청동', cat: '旅遊景點',
+              desc: '傳統韓屋與藝廊交織特色街道，氛圍悠閒。',
+              highlight: '傳統韓屋、藝廊與咖啡廳沿著坡道錯落，氣氛悠閒，鄰近北村韓屋村與景福宮，可以彈性串聯。',
+              tip: '街道以步行為主，坡度不小，穿好走的鞋；假日人潮較多，平日更適合慢慢逛。',
+              transit: '地鐵 3 號線「安國站」或 3 號線「景福宮站」，轉步行。', best: '上午，光線柔和' },
+            { id: 'nonfiction', day: 2, slot: '中午 / 三清洞', area: '安國・三清洞', name: 'Nonfiction Samcheong', kr: '논픽션 삼청', cat: '精品/香氛',
+              desc: '質感韓系香氛品牌門市，極具設計感。',
+              highlight: '韓系香氛品牌的三清洞門市，空間極具設計感，可試聞選購，也是熱門拍照點。',
+              tip: '試香時一次不要超過 3 款，並間隔聞自己的手腕，較不易混香；入手前也可看看弘大的 Nonfictionhome（備選景點）。',
+              transit: '位於三清洞內，請以 Naver Map 定位前往。', best: '中午前後，與午餐行程順路安排' },
+            { id: 'sukseongdo', day: 2, slot: '午餐 / 乙支路', area: '乙支路', name: '숙성도 을지로 (熟成度)', kr: '숙성도 을지로', cat: '韓式烤肉', meal: true,
+              desc: '獨家熟成技術頂級豬肉，專人代烤服務。',
+              highlight: '主打熟成豬肉，店員會代為燒烤，能把肉烤到最佳狀態，不用自己費心。',
+              tip: '熱門時段需候位，建議避開午間尖峰或提早到店登記；候位與預約方式以店家當日現場為準。',
+              transit: '乙支路一帶（2、3 號線乙支路 3 街站周邊），請以 Naver Map 確認店位。', best: '11:30 前或下午時段較不用等' },
+
+            // ---------- D3 10/24 ----------
+            { id: 'seoul-forest', day: 3, slot: '早晨 / 聖水', area: '聖水・首爾林', name: '首爾林公園', kr: '서울숲', cat: '公園',
+              desc: '都市綠洲，廣闊林蔭步道、湖泊與小鹿。',
+              highlight: '都市中的大型綠地，有林蔭步道、湖泊與小鹿區，10 月底有機會看到秋色。',
+              tip: '園區很大，建議鎖定一兩個區域慢慢走；早晨空氣清新、人也少，適合安排在聖水洞逛街之前。',
+              transit: '水仁盆唐線「首爾林站」，或 2 號線「聖水站」步行。', best: '早晨，接續聖水洞行程' },
+            { id: 'minari', day: 3, slot: '午餐 / 聖水', area: '聖水・首爾林', name: 'Neungdong Minari Seongsu', kr: '능동미나리 성수점', cat: '韓國料理', meal: true,
+              desc: '水芹菜特色料理，牛肉湯飯清爽美味。',
+              highlight: '以水芹菜入菜，牛肉湯飯口味清爽，適合逛了一個早上後暖胃。',
+              tip: '午餐尖峰可能要等位，可稍微提早或延後用餐。',
+              transit: '聖水洞內，請以 Naver Map 定位前往。', best: '11:30 前或 13:30 後' },
+            { id: 'salt-bread', day: 3, slot: '下午 / 聖水', area: '聖水・首爾林', name: '自然島鹽可頌 聖水店', kr: '자연도소금빵 성수', cat: '烘焙麵包',
+              desc: '現烤出爐奶油海鹽可頌，香氣濃郁超人氣。',
+              highlight: '現烤奶油海鹽可頌外酥內軟，是聖水洞必吃的人氣點心。',
+              tip: '鹽可頌最好趁熱吃，建議當天吃完；可趁出爐時間前往，現烤風味最好。',
+              transit: '聖水洞內，請以 Naver Map 定位前往。', best: '下午點心時間，出爐時段風味最佳' },
+            { id: 'sandos', day: 3, slot: '下午 / 聖水', area: '聖水・首爾林', name: 'Sandos Seongsu', kr: '샌도스 성수', cat: '三明治/咖啡',
+              desc: '極具設計感空間，熱門質感好店。',
+              highlight: '空間極具設計感，主打三明治與咖啡，是聖水洞的質感名店。',
+              tip: '熱門時段常見排隊，可先到現場登記後再逛附近店家。',
+              transit: '聖水洞內，請以 Naver Map 定位前往。', best: '下午，避開用餐尖峰' },
+            { id: 'muguok', day: 3, slot: '晚餐 / 聖水', area: '聖水・首爾林', name: '無垢屋 聖水店', kr: '무구옥 성수점', cat: '韓國料理', meal: true,
+              desc: '主打溫暖美味雞肉料理，暖胃首選。',
+              highlight: '主打雞肉料理，湯品與主菜都很適合秋夜暖胃，也適合作為聖水洞行程的收尾。',
+              tip: '晚餐時段建議提早到店；吃完可沿著聖水洞散步，欣賞夜晚的街景。',
+              transit: '聖水洞內，請以 Naver Map 定位前往。', best: '晚餐時段，約 18:00 前入座' },
+
+            // ---------- 備選 ----------
+            { id: 'nonfictionhome', day: 4, slot: '弘大 / 畫廊/香氛', area: '弘大', name: 'Nonfictionhome', kr: '논픽션홈', cat: '畫廊/香氛',
+              desc: '生活香氛展覽體驗空間。',
+              highlight: '結合生活香氛與展覽的體驗空間，離住宿 Nesto Hongdae 所在的弘大區域很近，適合順路造訪。',
+              tip: '可作為三清洞 Nonfiction 的替代或補充行程。', transit: '弘大商圈，請以 Naver Map 定位。', best: '午後，彈性安排' },
+            { id: 'dakjangsu', day: 4, slot: '弘大 / 韓國菜', area: '弘大', name: '닭장수김밥', kr: '닭장수김밥', cat: '韓國菜',
+              desc: '在地特色紫菜包飯。',
+              highlight: '在地特色紫菜包飯，份量輕巧，適合當作輕食或宵夜。',
+              tip: '紫菜包飯方便外帶，趕行程時很好用。', transit: '弘大商圈，請以 Naver Map 定位。', best: '早午餐或輕食時段' },
+            { id: 'makgeolli', day: 4, slot: '弘大 / 傳統酒吧', area: '弘大', name: 'Jwon Makgeolliano', kr: '줜막걸리아노', cat: '傳統酒吧',
+              desc: '特色米酒與韓式下酒菜酒吧。',
+              highlight: '特色米酒與韓式下酒菜，適合晚間小酌，感受道地的韓式酒吧氣氛。',
+              tip: '請酌量飲酒，注意回住宿的交通與安全。', transit: '弘大商圈，請以 Naver Map 定位。', best: '晚上' },
+            { id: 'pungcheon', day: 4, slot: '延南洞 / 鰻魚料理', area: '延南洞', name: '風川鰻魚 延南店', kr: '풍천장어 연남점', cat: '鰻魚料理', meal: true,
+              desc: '超人氣現烤鰻魚名店。',
+              highlight: '現烤鰻魚名店，位於文青氣息濃厚的延南洞，適合想吃一頓豐盛正餐的時候。',
+              tip: '人氣店家建議避開用餐尖峰，或提早抵達候位。', transit: '延南洞，弘大入口站周邊步行可達，請以 Naver Map 確認。', best: '午餐或晚餐' },
+            { id: 'ipark', day: 4, slot: '龍山 / 購物商場', area: '龍山', name: "I'Park Mall", kr: '아이파크몰 용산점', cat: '購物商場',
+              desc: '大型複合式購物商場與美食街。',
+              highlight: '大型複合式購物商場，結合服飾、生活用品與美食街，適合下雨天或想吹冷氣休息的行程。',
+              tip: '商場面積大，建議先在入口確認樓層導覽，再安排動線。', transit: '1 號線「龍山站」，與車站相連。', best: '雨天備案，或晚上補貨採買' },
+            { id: 'hongdaesak', day: 4, slot: '上水 / 炸物小吃', area: '上水', name: '홍대삭 상수본점', kr: '홍대삭 상수본점', cat: '炸物小吃',
+              desc: '平價道地韓式炸物與年糕店。',
+              highlight: '平價道地的韓式炸物與年糕，是逛街途中補充能量的好選擇。',
+              tip: '炸物建議現點現吃，口感最佳。', transit: '6 號線「上水站」步行可達。', best: '下午點心或宵夜時段' },
+            { id: 'peony', day: 4, slot: '弘大 / 咖啡甜點', area: '弘大', name: 'Peony 弘大店', kr: '피오니 홍대점', cat: '咖啡甜點',
+              desc: '知名鮮奶油草莓蛋糕專賣店。',
+              highlight: '以鮮奶油草莓蛋糕聞名的甜點專賣店，是下午茶時光的人氣選擇。',
+              tip: '蛋糕建議當場享用，外帶時間不宜過長。', transit: '弘大商圈，請以 Naver Map 定位。', best: '下午茶時間' }
+        ];
+
+        const DAY_LABELS = { 1: '10/22 (D1)', 2: '10/23 (D2)', 3: '10/24 (D3)', 4: '備選景點' };
+
+        const AREAS = [
+            { key: 'seongsu', name: '聖水洞', lat: 37.5445, lon: 127.0560 },
+            { key: 'seoulforest', name: '首爾林', lat: 37.5444, lon: 127.0374 },
+            { key: 'samcheong', name: '三清洞', lat: 37.5826, lon: 126.9830 },
+            { key: 'namsan', name: 'N首爾塔', lat: 37.5512, lon: 126.9882 },
+            { key: 'seoulstation', name: '首爾站', lat: 37.5547, lon: 126.9707 },
+            { key: 'ewha', name: '梨大', lat: 37.5619, lon: 126.9468 },
+            { key: 'hongdae', name: '弘大', lat: 37.5563, lon: 126.9236 }
+        ];
+
+        function esc(str) {
+            return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        function naverUrl(kr) {
+            return 'https://map.naver.com/v5/search/' + encodeURIComponent(kr);
+        }
+
+        // ================= 行程表渲染 =================
+        function renderPlan() {
+            [1, 2, 3, 4].forEach(day => {
+                const box = document.getElementById(`day-content-${day}`);
+                box.innerHTML = SPOTS.filter(s => s.day === day).map(s => {
+                    const accent = s.meal ? 'border-l-[#D06B54]' : 'border-l-[#8C8275]';
+                    const slotCls = s.meal ? 'bg-amber-50 text-amber-700 font-bold' : 'bg-[#F4EFEA] text-[#8C8275] font-medium';
+                    const sideBorder = day === 4 ? '' : `relative pl-6 border-l-4 ${accent}`;
+                    return `
+                    <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] ${sideBorder}">
+                        <span class="text-xs ${slotCls} px-2 py-0.5 rounded">${esc(s.slot)}</span>
+                        <h4 class="font-bold text-base mt-1 text-[#4A453F]">${esc(s.name)}</h4>
+                        <p class="text-xs text-gray-500 mb-2">${esc(s.kr)} | ${esc(s.cat)}</p>
+                        <p class="text-xs text-[#4A453F] mb-3">${esc(s.desc)}</p>
+                        <div class="flex space-x-2">
+                            <a href="${naverUrl(s.kr)}" target="_blank" rel="noopener" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
+                            </a>
+                            <button onclick="openGuide('${s.id}')" class="bg-white text-[#8C8275] border border-[#D4C5B9] hover:bg-[#F4EFEA] px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
+                                <i class="fa-solid fa-compass mr-1"></i> 導覽
+                            </button>
+                        </div>
+                    </div>`;
+                }).join('');
+            });
+        }
+
+        // ================= 導覽頁 =================
+        let guideFilter = 0; // 0 = 全部
+
+        function renderGuideFilters() {
+            const items = [{ v: 0, t: '全部' }, { v: 1, t: 'D1' }, { v: 2, t: 'D2' }, { v: 3, t: 'D3' }, { v: 4, t: '備選' }];
+            document.getElementById('guide-filters').innerHTML = items.map(i => {
+                const on = guideFilter === i.v;
+                return `<button onclick="setGuideFilter(${i.v})" class="px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition ${on ? 'bg-[#8C8275] text-white shadow-sm' : 'bg-white text-[#4A453F] border border-[#E8E2DA]'}">${i.t}</button>`;
+            }).join('');
+        }
+
+        function setGuideFilter(v) {
+            guideFilter = v;
+            renderGuideFilters();
+            renderGuideList();
+        }
+
+        function renderGuideList() {
+            const list = SPOTS.filter(s => guideFilter === 0 || s.day === guideFilter);
+            document.getElementById('guide-count').innerText = `共 ${list.length} 個景點`;
+            document.getElementById('guide-list').innerHTML = list.map(s => `
+                <div id="guide-${s.id}" class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-bold">${esc(DAY_LABELS[s.day])}</span>
+                        <span class="text-[10px] text-gray-400"><i class="fa-solid fa-location-dot mr-0.5"></i>${esc(s.area)}</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-base text-[#4A453F]">${esc(s.name)}</h4>
+                        <p class="text-xs text-gray-500">${esc(s.kr)} | ${esc(s.cat)}</p>
+                    </div>
+                    <p class="text-xs text-gray-700 leading-relaxed">${esc(s.highlight)}</p>
+                    <div class="bg-[#F9F8F6] rounded-xl p-2.5 text-[11px] text-gray-600 space-y-1.5 leading-relaxed">
+                        <p><i class="fa-solid fa-lightbulb text-amber-600 w-4"></i><b class="text-[#4A453F]">小撇步：</b>${esc(s.tip)}</p>
+                        <p><i class="fa-solid fa-train-subway text-[#8C8275] w-4"></i><b class="text-[#4A453F]">交通：</b>${esc(s.transit)}</p>
+                        <p><i class="fa-regular fa-clock text-[#8C8275] w-4"></i><b class="text-[#4A453F]">最佳時段：</b>${esc(s.best)}</p>
+                    </div>
+                    <a href="${naverUrl(s.kr)}" target="_blank" rel="noopener" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
+                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        function openGuide(id) {
+            const spot = SPOTS.find(s => s.id === id);
+            guideFilter = 0;
+            renderGuideFilters();
+            renderGuideList();
+            switchTab('guide');
+            setTimeout(() => {
+                const el = document.getElementById(`guide-${id}`);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.classList.add('ring-2', 'ring-[#8C8275]');
+                    setTimeout(() => el.classList.remove('ring-2', 'ring-[#8C8275]'), 1800);
+                }
+            }, 150);
+        }
+
+        // 街區地圖
+        function renderAreaChips() {
+            document.getElementById('area-chips').innerHTML = AREAS.map(a =>
+                `<button id="area-chip-${a.key}" onclick="setArea('${a.key}')" class="area-chip px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition bg-white text-[#4A453F] border border-[#E8E2DA]">${a.name}</button>`
+            ).join('');
+        }
+
+        function setArea(key) {
+            const a = AREAS.find(x => x.key === key) || AREAS[0];
+            const dLon = 0.01, dLat = 0.006;
+            const bbox = [a.lon - dLon, a.lat - dLat, a.lon + dLon, a.lat + dLat].join('%2C');
+            document.getElementById('area-map').src =
+                `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${a.lat}%2C${a.lon}`;
+            document.getElementById('area-map-link').href =
+                `https://www.openstreetmap.org/?mlat=${a.lat}&mlon=${a.lon}#map=16/${a.lat}/${a.lon}`;
+            document.querySelectorAll('.area-chip').forEach(el => {
+                el.classList.remove('bg-[#8C8275]', 'text-white', 'shadow-sm');
+                el.classList.add('bg-white', 'text-[#4A453F]', 'border', 'border-[#E8E2DA]');
+            });
+            const on = document.getElementById(`area-chip-${a.key}`);
+            on.classList.remove('bg-white', 'text-[#4A453F]', 'border', 'border-[#E8E2DA]');
+            on.classList.add('bg-[#8C8275]', 'text-white', 'shadow-sm');
+        }
+
+        // ================= 分頁切換 =================
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
@@ -507,19 +720,68 @@
             activeBtn.classList.add('bg-[#8C8275]', 'text-white', 'shadow-sm');
         }
 
+        // ================= 匯率（1 KRW = ? TWD） =================
+        function getRate() {
+            const r = parseFloat(document.getElementById('exchange-rate').value);
+            return r > 0 ? r : 0.024;
+        }
+
+        function fmt(n, digits) {
+            return Number(n).toLocaleString('zh-TW', { maximumFractionDigits: digits });
+        }
+
+        // 韓幣 → 台幣
+        function convFromKrw() {
+            const krw = parseFloat(document.getElementById('conv-krw').value);
+            const twdEl = document.getElementById('conv-twd');
+            twdEl.value = isNaN(krw) ? '' : (Math.round(krw * getRate() * 100) / 100);
+        }
+
+        // 台幣 → 韓幣
+        function convFromTwd() {
+            const twd = parseFloat(document.getElementById('conv-twd').value);
+            const krwEl = document.getElementById('conv-krw');
+            krwEl.value = isNaN(twd) ? '' : Math.round(twd / getRate());
+        }
+
+        function quickKrw(v) {
+            document.getElementById('conv-krw').value = v;
+            convFromKrw();
+        }
+
+        function clearConv() {
+            document.getElementById('conv-krw').value = '';
+            document.getElementById('conv-twd').value = '';
+        }
+
+        function onRateChange() {
+            try { localStorage.setItem('seoul_rate', document.getElementById('exchange-rate').value); } catch (e) {}
+            // 以韓幣欄位為主重新計算；若只有台幣欄位有值，則以台幣為主
+            if (document.getElementById('conv-krw').value !== '') {
+                convFromKrw();
+            } else if (document.getElementById('conv-twd').value !== '') {
+                convFromTwd();
+            }
+            previewTwd();
+        }
+
         // 簡易計算機
         function calculateExpression() {
             const input = document.getElementById('calc-input').value;
             try {
-                // 安全評估簡單算式
+                // 只保留數字與基本運算符號後再計算
                 const sanitized = input.replace(/[^0-9+\-*/().]/g, '');
-                const result = eval(sanitized);
-                const rate = parseFloat(document.getElementById('exchange-rate').value) || 0.024;
-                const twd = Math.round(result * rate);
+                const result = Function('"use strict"; return (' + sanitized + ')')();
+                if (typeof result !== 'number' || !isFinite(result)) throw new Error('invalid');
+                const twd = Math.round(result * getRate());
 
                 document.getElementById('calc-krw').innerText = result.toLocaleString();
                 document.getElementById('calc-twd').innerText = twd.toLocaleString();
                 document.getElementById('calc-result-box').classList.remove('hidden');
+
+                // 同步帶入上方的換算器
+                document.getElementById('conv-krw').value = Math.round(result);
+                convFromKrw();
             } catch (e) {
                 alert('算式格式錯誤，請重新輸入！');
             }
@@ -533,8 +795,7 @@
         // 記帳與預覽 TWD
         function previewTwd() {
             const amount = parseFloat(document.getElementById('exp-amount').value) || 0;
-            const rate = parseFloat(document.getElementById('exchange-rate').value) || 0.024;
-            document.getElementById('preview-twd-val').innerText = Math.round(amount * rate).toLocaleString();
+            document.getElementById('preview-twd-val').innerText = Math.round(amount * getRate()).toLocaleString();
         }
 
         // 記帳資料 LocalStorage 處理
@@ -544,7 +805,7 @@
             event.preventDefault();
             const name = document.getElementById('exp-name').value;
             const amount = parseFloat(document.getElementById('exp-amount').value);
-            const rate = parseFloat(document.getElementById('exchange-rate').value) || 0.024;
+            const rate = getRate();
             const photoInput = document.getElementById('exp-photo');
 
             if (photoInput.files && photoInput.files[0]) {
@@ -630,9 +891,9 @@
                 div.className = 'flex items-center justify-between p-2.5 bg-[#F9F8F6] rounded-xl border border-[#E8E2DA] text-xs';
                 div.innerHTML = `
                     <div class="flex items-center space-x-2.5">
-                        ${item.photo ? `<img src="${item.photo}" class="w-10 h-10 object-cover rounded-lg border border-[#D4C5B9]">` : `<div class="w-10 h-10 bg-[#F4EFEA] rounded-lg flex items-center justify-center text-[#8C8275]"><i class="fa-solid fa-krw"></i></div>`}
+                        ${item.photo ? `<img src="${item.photo}" class="w-10 h-10 object-cover rounded-lg border border-[#D4C5B9]">` : `<div class="w-10 h-10 bg-[#F4EFEA] rounded-lg flex items-center justify-center text-[#8C8275]"><i class="fa-solid fa-won-sign"></i></div>`}
                         <div>
-                            <span class="font-bold text-[#4A453F] block">${item.name}</span>
+                            <span class="font-bold text-[#4A453F] block">${esc(item.name)}</span>
                             <span class="text-[10px] text-gray-500">${item.amount.toLocaleString()} KRW (≈ NT$ ${item.twd.toLocaleString()})</span>
                         </div>
                     </div>
@@ -694,7 +955,7 @@
         function renderMemoLinks(text) {
             const linksContainer = document.getElementById('memo-links');
             linksContainer.innerHTML = '';
-            
+
             const urlRegex = /(https?:\/\/[^\s]+)/g;
             const urls = text.match(urlRegex);
 
@@ -708,8 +969,10 @@
                     const btn = document.createElement('a');
                     btn.href = url;
                     btn.target = '_blank';
+                    btn.rel = 'noopener';
                     btn.className = 'block p-2 bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white rounded-xl text-xs font-bold transition truncate text-center';
-                    btn.innerHTML = `<i class="fa-solid fa-link mr-1"></i> ${url}`;
+                    btn.innerHTML = `<i class="fa-solid fa-link mr-1"></i> `;
+                    btn.appendChild(document.createTextNode(url));
                     linksContainer.appendChild(btn);
                 });
             }
@@ -717,6 +980,15 @@
 
         // 頁面初始化
         window.onload = function() {
+            try {
+                const savedRate = localStorage.getItem('seoul_rate');
+                if (savedRate) document.getElementById('exchange-rate').value = savedRate;
+            } catch (e) {}
+            renderPlan();
+            renderGuideFilters();
+            renderGuideList();
+            renderAreaChips();
+            setArea('seongsu');
             renderExpenses();
             renderChecklist();
             const savedMemo = localStorage.getItem('seoul_memo') || '';
