@@ -47,6 +47,20 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        /* 行程卡「景點導覽」收折區 */
+        details.spot-guide > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details.spot-guide > summary::-webkit-details-marker {
+            display: none;
+        }
+        details.spot-guide .chev {
+            transition: transform 0.2s ease;
+        }
+        details.spot-guide[open] .chev {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen pb-20">
@@ -61,9 +75,9 @@
             </div>
         </div>
         <div class="flex items-center space-x-2">
-            <span class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2.5 py-1 rounded-full border border-[#D4C5B9]">
-                <i class="fa-solid fa-cloud-sun text-amber-600 mr-1"></i>首爾 15°C
-            </span>
+            <button type="button" id="weather-badge" onclick="updateWeather(true)" title="載入中…（點一下可重新整理）" class="text-xs bg-[#F4EFEA] text-[#8C8275] px-2.5 py-1 rounded-full border border-[#D4C5B9]">
+                <i id="weather-icon" class="fa-solid fa-cloud-sun text-amber-600 mr-1"></i><span id="weather-text">首爾 --°C</span>
+            </button>
         </div>
     </header>
 
@@ -131,7 +145,7 @@
                             <span class="block text-[#8C8275] font-medium"><i class="fa-solid fa-bed mr-1"></i>10/21 住宿</span>
                             <span class="font-bold block truncate">Incheon Airport Line Guesthouse</span>
                         </div>
-                        <a href="https://map.naver.com/p/entry/place/1151120591" target="_blank" rel="noopener" class="shrink-0 bg-white text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center border border-[#D4C5B9]">
+                        <a href="https://map.naver.com/v5/search/Incheon%20Airport%20Line%20Guesthouse" target="_blank" rel="noopener" class="shrink-0 bg-white text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center border border-[#D4C5B9]">
                             <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
                         </a>
                     </div>
@@ -189,14 +203,10 @@
                 </div>
             </div>
 
-            <!-- 景點導覽 -->
-            <div class="space-y-3">
-                <div class="flex items-center justify-between">
-                    <h3 class="font-bold text-sm text-[#8C8275]"><i class="fa-solid fa-compass mr-1"></i> 景點深度導覽</h3>
-                    <span id="guide-count" class="text-[10px] text-gray-400"></span>
-                </div>
-                <div id="guide-filters" class="flex space-x-2 overflow-x-auto hide-scrollbar pb-1"></div>
-                <div id="guide-list" class="space-y-3"></div>
+            <!-- 景點導覽已併入行程表 -->
+            <div class="bg-[#F4EFEA] rounded-2xl p-4 border border-[#D4C5B9] text-xs text-[#8C8275] leading-relaxed">
+                <i class="fa-solid fa-circle-info mr-1"></i>各景點的導覽說明（看點、小撇步、交通、最佳時段）已收折在「行程表」每個景點卡片下方，點「景點導覽」即可展開。
+                <button type="button" onclick="switchTab('plan')" class="block mt-2 bg-white text-[#8C8275] border border-[#D4C5B9] px-3 py-1.5 rounded-lg font-bold">前往行程表</button>
             </div>
         </section>
 
@@ -296,6 +306,19 @@
                 </div>
             </div>
 
+            <!-- 想去／想買清單 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
+                <h3 class="font-bold text-xs text-[#8C8275] flex items-center justify-between">
+                    <span><i class="fa-solid fa-heart mr-1"></i> 想去／想買清單</span>
+                    <button onclick="resetWishlist()" class="text-[10px] text-gray-400 underline">重置</button>
+                </h3>
+                <div id="wishlist-container" class="space-y-2 text-xs"></div>
+                <form onsubmit="addWish(event)" class="flex space-x-2">
+                    <input type="text" id="wish-input" placeholder="新增想去的地方或想買的東西" class="flex-1 px-3 py-2 bg-[#F9F8F6] border border-[#E8E2DA] rounded-xl text-xs focus:outline-none focus:border-[#8C8275]">
+                    <button type="submit" class="px-4 bg-[#8C8275] text-white rounded-xl text-xs font-bold hover:opacity-90">新增</button>
+                </form>
+            </div>
+
             <!-- 個人備忘錄 -->
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
                 <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-note-sticky mr-1"></i> 個人備忘錄與網址分享</h3>
@@ -323,11 +346,11 @@
 
                 <div class="bg-[#F4EFEA] p-3 rounded-xl text-xs space-y-1.5 leading-relaxed text-gray-700">
                     <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-store mr-1 text-[#8C8275]"></i>可以用在哪裡？</p>
-                    <p>LINE Pay 可在韓國 CU 等特定跨境通路掃碼付款；並非所有店家都支援，請認明店家的 LINE Pay 標示，結帳前先確認。</p>
+                    <p>LINE Pay 可在韓國指定店家掃碼付款；並非所有店家都支援，請認明店家的 LINE Pay 標示，結帳前先確認。</p>
                 </div>
 
                 <div class="bg-[#F4EFEA] p-3 rounded-xl text-xs space-y-2 leading-relaxed text-gray-700">
-                    <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-gift mr-1 text-[#8C8275]"></i>LINE Pay 回饋活動（10/1 ~ 12/31）</p>
+                    <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-gift mr-1 text-[#8C8275]"></i>LINE Pay 回饋活動（進行中，10/16 確認）</p>
 
                     <div class="bg-white rounded-lg p-2.5 border border-[#E8E2DA] space-y-1">
                         <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-dice mr-1"></i>轉轉樂</p>
@@ -336,7 +359,11 @@
 
                     <div class="bg-white rounded-lg p-2.5 border border-[#E8E2DA] space-y-1">
                         <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-utensils mr-1"></i>吃喝補給／<i class="fa-solid fa-bag-shopping mr-1"></i>旅遊購物</p>
-                        <p class="text-[11px] text-gray-500">基本回饋：吃喝補給 5%</p>
+                        <p class="text-[11px] text-gray-500">基本回饋：使用 LINE Pay 付款，吃喝補給單筆不限金額 5%（活動至 12/31）</p>
+                        <ul class="list-disc pl-4 space-y-0.5 text-[11px]">
+                            <li><b>吃喝補給通路：</b>7-Eleven、CU、emart24、A-REX 韓國機場鐵路，以及指定餐廳與咖啡店。單筆最高可疊加至 <b>25%</b>。</li>
+                            <li><b>旅遊購物通路：</b>樂天百貨、新世界百貨、樂天／新世界／新羅免稅店、愛寶樂園、南怡島。單筆最高可疊加至 <b>8%</b>。</li>
+                        </ul>
                         <div class="overflow-x-auto">
                             <table class="w-full text-[11px] border-collapse">
                                 <thead>
@@ -372,16 +399,16 @@
                         <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-spa mr-1"></i>獨立活動：Olive Young</p>
                         <ul class="list-disc pl-4 space-y-0.5">
                             <li>～2026/12/31：不限金額，每月可抽 888 點一次。</li>
-                            <li>10/1 ~ 10/31：單筆滿 10 萬韓元享 95 折（限用 1 次），優惠券請至 LINE Pay「遊韓專區」下載。</li>
-                            <li>Global 線上購物（10/1 ~ 10/11，<span class="text-rose-600 font-bold">已結束</span>）：綁 VISA 卡 3%；綁中信 LINE Pay VISA／JCB／簽帳卡、聯邦賴點卡、永豐 DAWAY 卡 +5%。</li>
+                            <li>～10/31：單筆滿 10 萬韓元享 95 折（限用 1 次），優惠券請至 LINE Pay「遊韓專區」下載，涵蓋 10/21~25 行程。</li>
                         </ul>
                     </div>
 
                     <div class="bg-white rounded-lg p-2.5 border border-[#E8E2DA] space-y-1">
                         <p class="font-bold text-[#8C8275]"><i class="fa-solid fa-star mr-1"></i>獨立活動：樂天世界（最高 30%）</p>
                         <ul class="list-disc pl-4 space-y-0.5">
-                            <li>活動期間 9/1 ~ 11/30，限樂天世界（首爾／釜山）、樂天世界塔 Seoul Sky、樂天世界水族館。</li>
-                            <li>綁任一信用卡或簽帳卡 15%，綁 VISA 卡再 +15%。</li>
+                            <li>～11/30：限樂天世界（首爾／釜山）、樂天世界塔 Seoul Sky、樂天世界水族館，LINE Pay 付款不限金額 15%，再綁任一 VISA 卡 +15%。</li>
+                            <li>～12/31：售票處現場購票以 LINE Pay 付款享 8 折，並同享點數回饋。</li>
+                            <li>～10/31：樂天世界<b>釜山園區</b>現場購票 65 折限時活動（行程在首爾，僅供參考）。</li>
                         </ul>
                     </div>
 
@@ -399,9 +426,57 @@
                 </div>
 
                 <p class="text-[10px] text-gray-400 leading-relaxed">
-                    ※ 回饋活動內容為你提供的 LINE Pay 優惠資訊，活動內容、回饋比例與上限隨時可能調整，請以 LINE Pay 官方 App 及發卡銀行公告為準。海外手續費與注意事項依網路報導整理。
-                    參考來源：<a href="https://uptogo.com.tw/財經/信用卡/韓國可刷line-pay嗎？/" target="_blank" rel="noopener" class="underline text-[#8C8275]">uptogo｜韓國可刷 LINE Pay 嗎？</a>、
+                    ※ 各卡別月上限與 Olive Young 項目為使用者提供的資料，其餘依 2026/10/12~13 媒體報導整理；加碼名額有限，去年同檔活動曾提前額滿，實際回饋、上限與是否額滿請以 LINE Pay App「遊韓專區」及發卡銀行公告為準。海外手續費與注意事項依網路報導整理。
+                    參考來源：<a href="https://ctinews.com/news/items/v7x33Rbzxj" target="_blank" rel="noopener" class="underline text-[#8C8275]">中天新聞網｜LINE Pay 韓國活動</a>、
+                    <a href="https://news.pchome.com.tw/expense/leho/20261013/index-79183256956210356013.html" target="_blank" rel="noopener" class="underline text-[#8C8275]">樂聯網｜韓國旅遊刷 LINE Pay</a>、
+                    <a href="https://uptogo.com.tw/財經/信用卡/韓國可刷line-pay嗎？/" target="_blank" rel="noopener" class="underline text-[#8C8275]">uptogo｜韓國可刷 LINE Pay 嗎？</a>、
                     <a href="https://www.money101.com.tw/blog/韓國-line-pay" target="_blank" rel="noopener" class="underline text-[#8C8275]">Money101｜2026 韓國 LINE Pay</a>
+                </p>
+            </div>
+
+            <!-- 免稅與退稅規定 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-3">
+                <h3 class="font-bold text-xs text-[#8C8275]"><i class="fa-solid fa-receipt mr-1"></i> 免稅與退稅規定</h3>
+
+                <div class="bg-[#F4EFEA] p-3 rounded-xl text-xs space-y-1.5 leading-relaxed text-gray-700">
+                    <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-plane-departure mr-1 text-[#8C8275]"></i>韓國購物退稅（離境）</p>
+                    <ul class="list-disc pl-4 space-y-1">
+                        <li><b>門檻與退稅率：</b>單筆符合資格的商品消費滿 <b>15,000 韓元</b>可退稅；實際退款約為含稅金額的 5%～8%，以結帳畫面或退稅單金額為準。</li>
+                        <li><b>店內即時退稅：</b>結帳時直接扣除，單筆低於 1,000,000 韓元、本次旅程累計不超過 5,000,000 韓元；需出示護照。</li>
+                        <li><b>事後退稅（市區／機場）：</b>超過即時退稅限制或未在店內退稅時使用；市區單筆不超過 6,000,000 韓元，需護照、退稅單與收據，市區退稅另需本人信用卡作擔保。</li>
+                        <li><b>商品規定：</b>須在購買日起 <b>3 個月內</b>由本人攜帶出境，出境前請勿拆封使用；若要托運，須先告知地勤並完成海關確認。</li>
+                        <li><b>機場流程：</b>用自助機掃描護照與退稅單 → 若被抽查，出示護照、收據與商品 → 通過出境審查後到退稅櫃檯領取。建議多預留 30～60 分鐘。</li>
+                        <li><b>退款時間：</b>退到信用卡等非現金方式，約需 1～2 個月入帳。</li>
+                    </ul>
+                    <p class="text-amber-700 bg-amber-50 border border-amber-100 rounded-lg p-2"><i class="fa-solid fa-triangle-exclamation mr-1"></i>回程 10/25 華航 CI0261 從<b>金浦機場</b>出發（13:55）。參考資料中的退稅櫃檯營業時間（仁川 T1 07:00～22:00、T2 07:00～21:30）是仁川機場的資訊，金浦請另行確認，並建議能即時退稅的商品優先在店內辦理。</p>
+                </div>
+
+                <div class="bg-[#F4EFEA] p-3 rounded-xl text-xs space-y-1.5 leading-relaxed text-gray-700">
+                    <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-store mr-1 text-[#8C8275]"></i>免稅店購物</p>
+                    <ul class="list-disc pl-4 space-y-1">
+                        <li>樂天、新世界、新羅免稅店皆屬 LINE Pay「旅遊購物」回饋通路（見上方活動）。</li>
+                        <li>免稅店與退稅購買的商品，返台時都要<b>併入下方的台灣入境免稅額</b>計算。</li>
+                    </ul>
+                </div>
+
+                <div class="bg-[#F4EFEA] p-3 rounded-xl text-xs space-y-1.5 leading-relaxed text-gray-700">
+                    <p class="font-bold text-[#4A453F]"><i class="fa-solid fa-plane-arrival mr-1 text-[#8C8275]"></i>返台入境免稅額（台灣海關）</p>
+                    <ul class="list-disc pl-4 space-y-1">
+                        <li><b>行李物品：</b>自用及家用物品（管制品及菸酒除外）完稅價格合計 <b>NT$35,000</b> 以下免稅（2024/6/26 起，原為 NT$20,000）。超過請走<b>紅線檯</b>申報補稅；明顯帶貨營利，或經常出入境且有違規紀錄者不適用。</li>
+                        <li><b>酒類：</b>年滿 18 歲，免稅 <b>1.5 公升</b>（瓶數不限，2025/1/25 起）；超量須申報補稅，總量上限 5 公升。</li>
+                        <li><b>菸品：</b>年滿 20 歲，捲菸 200 支（1 條）、雪茄 25 支、菸絲 1 磅擇一；經衛福部核定的加熱菸 200 支（2026/2/1 起）。未經核定的加熱菸與電子煙不得帶入，違者可罰 NT$5 萬～500 萬。</li>
+                        <li><b>現金申報：</b>外幣現鈔逾等值 US$10,000、新台幣逾 NT$100,000 須申報。</li>
+                        <li><b>肉製品：</b>攜帶疫區豬肉製品入境，初犯罰 NT$20 萬；購買肉類加工品前請先查詢防檢署規定。</li>
+                        <li><b>未申報：</b>超量部分沒入並處罰鍰，請走紅線檯主動申報。</li>
+                    </ul>
+                </div>
+
+                <p class="text-[10px] text-gray-400 leading-relaxed">
+                    ※ 規定可能調整，退稅以店家退稅單與結帳畫面為準，入境規定以財政部關務署公告為準。
+                    參考來源：<a href="https://www.money101.com.tw/blog/%E9%9F%93%E5%9C%8B%E9%80%80%E7%A8%85" target="_blank" rel="noopener" class="underline text-[#8C8275]">Money101｜韓國退稅</a>、
+                    <a href="https://law-out.mof.gov.tw/LawContent.aspx?id=FL006260" target="_blank" rel="noopener" class="underline text-[#8C8275]">財政部｜入境旅客攜帶行李物品報驗稅放辦法</a>、
+                    <a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=77c155497b744580a065438b0c8178dd" target="_blank" rel="noopener" class="underline text-[#8C8275]">財政部｜自用菸酒限量及免稅額</a>、
+                    <a href="https://0523.tw/traveler-customs-allowance-taiwan" target="_blank" rel="noopener" class="underline text-[#8C8275]">0523｜台灣入境菸酒與申報整理</a>
                 </p>
             </div>
 
@@ -481,6 +556,11 @@
               tip: '10 月底傍晚山上風大偏涼，多帶一件外套；下山時人潮集中，可預留排隊時間，或選擇步行下山。',
               transit: '明洞站步行至南山纜車站，或搭南山循環巴士上山。', best: '約日落前 30 分鐘抵達，一次看日落與夜景' },
 
+            { id: 'pungcheon', day: 1, slot: '晚餐 / 延南洞', area: '延南洞', name: '風川鰻魚 延南店', kr: '풍천장어 연남점', cat: '鰻魚料理', meal: true,
+              desc: '超人氣現烤鰻魚名店，南山夜景後的豐盛晚餐。',
+              highlight: '現烤鰻魚名店，位於文青氣息濃厚的延南洞，離弘大住宿不遠，適合第一天行程結束後吃一頓豐盛的晚餐。',
+              tip: '人氣店家建議避開用餐尖峰，或提早抵達候位；營業時間與候位方式請先用 Naver Map 確認。',
+              transit: '南山下山後搭地鐵回弘大一帶，延南洞從弘大入口站周邊步行可達，請以 Naver Map 確認路線。', best: '南山夜景之後的晚餐時段' },
             // ---------- D2 10/23 ----------
             { id: 'artist-bakery', day: 2, slot: '早晨 / 安國', area: '安國・三清洞', name: 'Artist Bakery', kr: '아티스트 베이커리 안국', cat: '咖啡/烘焙', meal: true,
               desc: '人氣烘焙麵包店，法式復古風格，特色鹹甜麵包。',
@@ -503,6 +583,17 @@
               tip: '熱門時段需候位，建議避開午間尖峰或提早到店登記；候位與預約方式以店家當日現場為準。',
               transit: '乙支路一帶（2、3 號線乙支路 3 街站周邊），請以 Naver Map 確認店位。', best: '11:30 前或下午時段較不用等' },
 
+            { id: 'ipark', day: 2, slot: '下午 / 龍山', area: '龍山', name: "I'Park Mall", kr: '아이파크몰 용산점', cat: '購物商場', tag: 'Chiikawa',
+              extra: { label: 'Chiikawa Shop', kr: '치이카와샵 용산점' },
+              desc: '大型複合式購物商場與美食街，3 樓設有 Chiikawa（ちいかわ）專賣店。',
+              highlight: '大型複合式購物商場，結合服飾、生活用品與美食街。Chiikawa 重點：3 樓「Living Park 도파민 스테이션（Dopamine Station）」設有 치이카와샵（Chiikawa Shop）龍山店，可買到吉伊卡哇周邊。',
+              tip: 'Chiikawa Shop 公告的營業時間為每日 10:30~22:00。該店 2026/2/27 開幕，初期曾限網路預約入場；10 月現況（是否營業、是否需預約、有無限購）請出發前到官方 X 帳號 @chiikawashop_kr 確認。商場面積大，先看樓層導覽再排動線。',
+              transit: '1 號線「龍山站」，與車站相連。中午在乙支路吃完熟成烤肉後搭地鐵前往，換乘路線請用 Naver Map 查詢。', best: '午餐後的下午，逛到傍晚再回弘大一帶吃晚餐' },
+            { id: 'hongdaesak', day: 2, slot: '晚餐 / 上水', area: '上水', name: '홍대삭 상수본점', kr: '홍대삭 상수본점', cat: '炸物小吃', meal: true,
+              desc: '平價道地韓式炸物與辣炒年糕，午餐吃烤肉後的輕鬆晚餐。',
+              highlight: '主打平價的辣炒年糕與綜合炸物，分量輕巧，中午吃過熟成烤肉後，晚餐吃輕一點剛好。',
+              tip: '炸物建議現點現吃，口感最佳。網站參考價格：辣炒年糕約 4,000 韓元、綜合炸物（11 種）約 14,000 韓元，實際以現場為準；營業時間請先用 Naver Map 確認。如果吃不飽，可接著去備選的 Peony 吃甜點。',
+              transit: '位於弘大住宿附近的上水一帶（6 號線「上水站」），從龍山回程後前往，請以 Naver Map 確認路線。', best: '龍山逛完回到弘大一帶後的晚餐時段' },
             // ---------- D3 10/24 ----------
             { id: 'seoul-forest', day: 3, slot: '早晨 / 聖水', area: '聖水・首爾林', name: '首爾林公園', kr: '서울숲', cat: '公園',
               desc: '都市綠洲，廣闊林蔭步道、湖泊與小鹿。',
@@ -543,18 +634,6 @@
               desc: '特色米酒與韓式下酒菜酒吧。',
               highlight: '特色米酒與韓式下酒菜，適合晚間小酌，感受道地的韓式酒吧氣氛。',
               tip: '請酌量飲酒，注意回住宿的交通與安全。', transit: '弘大商圈，請以 Naver Map 定位。', best: '晚上' },
-            { id: 'pungcheon', day: 4, slot: '延南洞 / 鰻魚料理', area: '延南洞', name: '風川鰻魚 延南店', kr: '풍천장어 연남점', cat: '鰻魚料理', meal: true,
-              desc: '超人氣現烤鰻魚名店。',
-              highlight: '現烤鰻魚名店，位於文青氣息濃厚的延南洞，適合想吃一頓豐盛正餐的時候。',
-              tip: '人氣店家建議避開用餐尖峰，或提早抵達候位。', transit: '延南洞，弘大入口站周邊步行可達，請以 Naver Map 確認。', best: '午餐或晚餐' },
-            { id: 'ipark', day: 4, slot: '龍山 / 購物商場', area: '龍山', name: "I'Park Mall", kr: '아이파크몰 용산점', cat: '購物商場',
-              desc: '大型複合式購物商場與美食街。',
-              highlight: '大型複合式購物商場，結合服飾、生活用品與美食街，適合下雨天或想吹冷氣休息的行程。',
-              tip: '商場面積大，建議先在入口確認樓層導覽，再安排動線。', transit: '1 號線「龍山站」，與車站相連。', best: '雨天備案，或晚上補貨採買' },
-            { id: 'hongdaesak', day: 4, slot: '上水 / 炸物小吃', area: '上水', name: '홍대삭 상수본점', kr: '홍대삭 상수본점', cat: '炸物小吃',
-              desc: '平價道地韓式炸物與年糕店。',
-              highlight: '平價道地的韓式炸物與年糕，是逛街途中補充能量的好選擇。',
-              tip: '炸物建議現點現吃，口感最佳。', transit: '6 號線「上水站」步行可達。', best: '下午點心或宵夜時段' },
             { id: 'peony', day: 4, slot: '弘大 / 咖啡甜點', area: '弘大', name: 'Peony 弘大店', kr: '피오니 홍대점', cat: '咖啡甜點',
               desc: '知名鮮奶油草莓蛋糕專賣店。',
               highlight: '以鮮奶油草莓蛋糕聞名的甜點專賣店，是下午茶時光的人氣選擇。',
@@ -592,6 +671,7 @@
                     return `
                     <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] ${sideBorder}">
                         <span class="text-xs ${slotCls} px-2 py-0.5 rounded">${esc(s.slot)}</span>
+                        ${s.tag ? `<span class="text-[10px] bg-pink-50 text-pink-600 border border-pink-200 px-2 py-0.5 rounded-full font-bold ml-1.5"><i class="fa-solid fa-paw mr-0.5"></i>${esc(s.tag)}</span>` : ''}
                         <h4 class="font-bold text-base mt-1 text-[#4A453F]">${esc(s.name)}</h4>
                         <p class="text-xs text-gray-500 mb-2">${esc(s.kr)} | ${esc(s.cat)}</p>
                         <p class="text-xs text-[#4A453F] mb-3">${esc(s.desc)}</p>
@@ -599,72 +679,27 @@
                             <a href="${naverUrl(s.kr)}" target="_blank" rel="noopener" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
                                 <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
                             </a>
-                            <button onclick="openGuide('${s.id}')" class="bg-white text-[#8C8275] border border-[#D4C5B9] hover:bg-[#F4EFEA] px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
-                                <i class="fa-solid fa-compass mr-1"></i> 導覽
-                            </button>
+                            ${s.extra ? `<a href="${naverUrl(s.extra.kr)}" target="_blank" rel="noopener" class="bg-pink-50 text-pink-600 border border-pink-200 hover:bg-pink-500 hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center">
+                                <i class="fa-solid fa-paw mr-1"></i> ${esc(s.extra.label)}
+                            </a>` : ''}
                         </div>
+                        <details class="spot-guide mt-3 border-t border-[#E8E2DA] pt-2">
+                            <summary class="flex items-center justify-between text-xs font-bold text-[#8C8275] py-1">
+                                <span><i class="fa-solid fa-compass mr-1"></i>景點導覽</span>
+                                <i class="fa-solid fa-chevron-down chev text-[10px]"></i>
+                            </summary>
+                            <div class="pt-2 space-y-2">
+                                <p class="text-xs text-gray-700 leading-relaxed">${esc(s.highlight)}</p>
+                                <div class="bg-[#F9F8F6] rounded-xl p-2.5 text-[11px] text-gray-600 space-y-1.5 leading-relaxed">
+                                    <p><i class="fa-solid fa-lightbulb text-amber-600 w-4"></i><b class="text-[#4A453F]">小撇步：</b>${esc(s.tip)}</p>
+                                    <p><i class="fa-solid fa-train-subway text-[#8C8275] w-4"></i><b class="text-[#4A453F]">交通：</b>${esc(s.transit)}</p>
+                                    <p><i class="fa-regular fa-clock text-[#8C8275] w-4"></i><b class="text-[#4A453F]">最佳時段：</b>${esc(s.best)}</p>
+                                </div>
+                            </div>
+                        </details>
                     </div>`;
                 }).join('');
             });
-        }
-
-        // ================= 導覽頁 =================
-        let guideFilter = 0; // 0 = 全部
-
-        function renderGuideFilters() {
-            const items = [{ v: 0, t: '全部' }, { v: 1, t: 'D1' }, { v: 2, t: 'D2' }, { v: 3, t: 'D3' }, { v: 4, t: '備選' }];
-            document.getElementById('guide-filters').innerHTML = items.map(i => {
-                const on = guideFilter === i.v;
-                return `<button onclick="setGuideFilter(${i.v})" class="px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition ${on ? 'bg-[#8C8275] text-white shadow-sm' : 'bg-white text-[#4A453F] border border-[#E8E2DA]'}">${i.t}</button>`;
-            }).join('');
-        }
-
-        function setGuideFilter(v) {
-            guideFilter = v;
-            renderGuideFilters();
-            renderGuideList();
-        }
-
-        function renderGuideList() {
-            const list = SPOTS.filter(s => guideFilter === 0 || s.day === guideFilter);
-            document.getElementById('guide-count').innerText = `共 ${list.length} 個景點`;
-            document.getElementById('guide-list').innerHTML = list.map(s => `
-                <div id="guide-${s.id}" class="bg-white rounded-2xl p-4 shadow-sm border border-[#E8E2DA] space-y-2.5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[10px] bg-[#F4EFEA] text-[#8C8275] px-2 py-0.5 rounded font-bold">${esc(DAY_LABELS[s.day])}</span>
-                        <span class="text-[10px] text-gray-400"><i class="fa-solid fa-location-dot mr-0.5"></i>${esc(s.area)}</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-base text-[#4A453F]">${esc(s.name)}</h4>
-                        <p class="text-xs text-gray-500">${esc(s.kr)} | ${esc(s.cat)}</p>
-                    </div>
-                    <p class="text-xs text-gray-700 leading-relaxed">${esc(s.highlight)}</p>
-                    <div class="bg-[#F9F8F6] rounded-xl p-2.5 text-[11px] text-gray-600 space-y-1.5 leading-relaxed">
-                        <p><i class="fa-solid fa-lightbulb text-amber-600 w-4"></i><b class="text-[#4A453F]">小撇步：</b>${esc(s.tip)}</p>
-                        <p><i class="fa-solid fa-train-subway text-[#8C8275] w-4"></i><b class="text-[#4A453F]">交通：</b>${esc(s.transit)}</p>
-                        <p><i class="fa-regular fa-clock text-[#8C8275] w-4"></i><b class="text-[#4A453F]">最佳時段：</b>${esc(s.best)}</p>
-                    </div>
-                    <a href="${naverUrl(s.kr)}" target="_blank" rel="noopener" class="bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition inline-flex items-center">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Naver Map
-                    </a>
-                </div>
-            `).join('');
-        }
-
-        function openGuide(id) {
-            const spot = SPOTS.find(s => s.id === id);
-            guideFilter = 0;
-            renderGuideFilters();
-            renderGuideList();
-            switchTab('guide');
-            setTimeout(() => {
-                const el = document.getElementById(`guide-${id}`);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    el.classList.add('ring-2', 'ring-[#8C8275]');
-                    setTimeout(() => el.classList.remove('ring-2', 'ring-[#8C8275]'), 1800);
-                }
-            }, 150);
         }
 
         // 街區地圖
@@ -945,6 +980,135 @@
             renderChecklist();
         }
 
+        // 想去／想買清單（預設帶入備選景點 I'Park Mall）
+        function defaultWishlist() {
+            const ip = SPOTS.find(s => s.id === 'ipark');
+            return [{ id: 'w-ipark', text: ip.name, kr: ip.kr, note: ip.desc, tag: ip.tag, checked: false }];
+        }
+
+        function loadWishlist() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('seoul_wishlist'));
+                if (Array.isArray(saved)) {
+                    // 舊版儲存的 I'Park Mall 沒有 Chiikawa 標註，載入時同步為最新內容並保留勾選狀態
+                    const fresh = defaultWishlist()[0];
+                    return saved.map(w => w.id === 'w-ipark' ? { ...fresh, checked: !!w.checked } : w);
+                }
+            } catch (e) {}
+            return defaultWishlist();
+        }
+
+        let wishlist = loadWishlist();
+
+        function saveWishlist() {
+            try { localStorage.setItem('seoul_wishlist', JSON.stringify(wishlist)); } catch (e) {}
+        }
+
+        function renderWishlist() {
+            const box = document.getElementById('wishlist-container');
+            if (wishlist.length === 0) {
+                box.innerHTML = '<p class="text-xs text-gray-400 text-center py-3">清單是空的，可在下方新增</p>';
+                return;
+            }
+            box.innerHTML = wishlist.map(item => `
+                <div class="flex items-start space-x-2.5 p-2 bg-[#F9F8F6] rounded-xl border border-[#E8E2DA]">
+                    <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleWish('${item.id}')" class="w-4 h-4 mt-0.5 accent-[#8C8275] rounded">
+                    <div class="flex-1 min-w-0">
+                        <span class="block font-medium ${item.checked ? 'line-through text-gray-400' : 'text-[#4A453F]'}">${esc(item.text)}${item.tag ? ` <span class="text-[10px] bg-pink-50 text-pink-600 border border-pink-200 px-1.5 py-0.5 rounded-full font-bold no-underline"><i class="fa-solid fa-paw mr-0.5"></i>${esc(item.tag)}</span>` : ''}${item.id === 'w-ipark' ? ' <span class="text-[10px] text-[#8C8275] font-bold">（已排入 D2）</span>' : ''}</span>
+                        ${item.kr ? `<span class="block text-[10px] text-gray-500">${esc(item.kr)}</span>` : ''}
+                        ${item.note ? `<span class="block text-[10px] text-gray-500 mt-0.5">${esc(item.note)}</span>` : ''}
+                        ${item.kr ? `<a href="${naverUrl(item.kr)}" target="_blank" rel="noopener" class="inline-flex items-center mt-1.5 bg-[#F4EFEA] text-[#8C8275] hover:bg-[#8C8275] hover:text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition"><i class="fa-solid fa-location-dot mr-1"></i> Naver Map</a>` : ''}
+                    </div>
+                    <button onclick="deleteWish('${item.id}')" class="text-gray-400 hover:text-rose-600 p-1" aria-label="刪除"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function toggleWish(id) {
+            wishlist = wishlist.map(w => w.id === id ? { ...w, checked: !w.checked } : w);
+            saveWishlist();
+            renderWishlist();
+        }
+
+        function deleteWish(id) {
+            wishlist = wishlist.filter(w => w.id !== id);
+            saveWishlist();
+            renderWishlist();
+        }
+
+        function addWish(event) {
+            event.preventDefault();
+            const input = document.getElementById('wish-input');
+            const text = input.value.trim();
+            if (!text) return;
+            wishlist.push({ id: 'w-' + Date.now(), text, kr: '', note: '', checked: false });
+            input.value = '';
+            saveWishlist();
+            renderWishlist();
+        }
+
+        function resetWishlist() {
+            wishlist = defaultWishlist();
+            saveWishlist();
+            renderWishlist();
+        }
+
+        // ================= 首爾即時氣溫（Open-Meteo，免金鑰） =================
+        const WEATHER_URL = 'https://api.open-meteo.com/v1/forecast?latitude=37.5665&longitude=126.9780&current=temperature_2m,weather_code&timezone=Asia%2FSeoul';
+        const WEATHER_REFRESH_MS = 15 * 60 * 1000;   // 每 15 分鐘自動更新
+        const WEATHER_STALE_MS = 3 * 60 * 60 * 1000; // 快取超過 3 小時就不再顯示舊溫度
+
+        function weatherIconClass(code) {
+            if (code === 0) return 'fa-sun';
+            if (code === 1 || code === 2) return 'fa-cloud-sun';
+            if (code === 3) return 'fa-cloud';
+            if (code === 45 || code === 48) return 'fa-smog';
+            if (code >= 51 && code <= 67) return 'fa-cloud-rain';
+            if (code >= 71 && code <= 77) return 'fa-snowflake';
+            if (code >= 80 && code <= 82) return 'fa-cloud-showers-heavy';
+            if (code >= 85 && code <= 86) return 'fa-snowflake';
+            if (code >= 95) return 'fa-bolt';
+            return 'fa-cloud-sun';
+        }
+
+        function showWeather(temp, code, stamp, isCached) {
+            const icon = document.getElementById('weather-icon');
+            icon.className = 'fa-solid ' + weatherIconClass(code) + ' text-amber-600 mr-1';
+            document.getElementById('weather-text').innerText = `首爾 ${Math.round(temp)}°C`;
+            const t = new Date(stamp).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('weather-badge').title =
+                (isCached ? '無法連線，顯示上次資料，' : '') + `更新於 ${t}（點一下可重新整理）`;
+        }
+
+        async function updateWeather(manual) {
+            const badge = document.getElementById('weather-badge');
+            if (!badge) return;
+            const ctl = new AbortController();
+            const timer = setTimeout(() => ctl.abort(), 8000);
+            try {
+                const res = await fetch(WEATHER_URL, { signal: ctl.signal, cache: 'no-store' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                const temp = data && data.current && data.current.temperature_2m;
+                const code = data && data.current ? data.current.weather_code : null;
+                if (typeof temp !== 'number') throw new Error('no temperature');
+                const stamp = Date.now();
+                showWeather(temp, code, stamp, false);
+                try { localStorage.setItem('seoul_weather', JSON.stringify({ temp, code, stamp })); } catch (e) {}
+            } catch (e) {
+                let cached = null;
+                try { cached = JSON.parse(localStorage.getItem('seoul_weather')); } catch (e2) {}
+                if (cached && Date.now() - cached.stamp < WEATHER_STALE_MS) {
+                    showWeather(cached.temp, cached.code, cached.stamp, true);
+                } else {
+                    document.getElementById('weather-text').innerText = '首爾 --°C';
+                    badge.title = '目前無法取得氣溫（點一下可重試）';
+                }
+            } finally {
+                clearTimeout(timer);
+            }
+        }
+
         // 個人備忘錄與自動轉網址
         function saveMemo() {
             const memoText = document.getElementById('memo-input').value;
@@ -985,12 +1149,14 @@
                 if (savedRate) document.getElementById('exchange-rate').value = savedRate;
             } catch (e) {}
             renderPlan();
-            renderGuideFilters();
-            renderGuideList();
             renderAreaChips();
             setArea('seongsu');
             renderExpenses();
             renderChecklist();
+            renderWishlist();
+            updateWeather();
+            setInterval(updateWeather, WEATHER_REFRESH_MS);
+            document.addEventListener('visibilitychange', () => { if (!document.hidden) updateWeather(); });
             const savedMemo = localStorage.getItem('seoul_memo') || '';
             document.getElementById('memo-input').value = savedMemo;
             renderMemoLinks(savedMemo);
